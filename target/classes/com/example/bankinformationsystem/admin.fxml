@@ -44,7 +44,7 @@
       <TextField fx:id="StatusField" layoutX="175.0" layoutY="149.0" prefHeight="25.0" prefWidth="336.0" />
       <TextField fx:id="LoginField" layoutX="175.0" layoutY="183.0" prefHeight="25.0" prefWidth="336.0" />
       <TextField fx:id="MoneyField" layoutX="175.0" layoutY="247.0" prefHeight="25.0" prefWidth="336.0" />
-      <ComboBox fx:id="ComboCartBox" editable="true" layoutX="164.0" layoutY="75.0" onAction="#loadDataFromCards" prefHeight="17.0" prefWidth="348.0" promptText="Выбрать карту" visibleRowCount="7">
+      <ComboBox fx:id="CardList" editable="true" layoutX="164.0" layoutY="75.0" onAction="#loadDataFromCards" prefHeight="17.0" prefWidth="348.0" promptText="Выбрать карту" visibleRowCount="7">
          <cursor>
             <Cursor fx:constant="DEFAULT" />
          </cursor></ComboBox>
@@ -58,7 +58,7 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="UpdateDataDB" layoutX="369.0" layoutY="293.0" mnemonicParsing="false" onAction="#updateUserDate" prefHeight="25.0" prefWidth="217.0" text="Обновить данные о пользователе">
+      <Button fx:id="UpdateUserDataButton" layoutX="369.0" layoutY="293.0" mnemonicParsing="false" onAction="#updateUserDate" prefHeight="25.0" prefWidth="217.0" text="Обновить данные о пользователе">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -69,7 +69,7 @@
          </font>
       </Label>
       <TextField fx:id="PasswordField" layoutX="175.0" layoutY="215.0" prefHeight="25.0" prefWidth="336.0" />
-      <Button fx:id="AddUserToDB" layoutX="369.0" layoutY="327.0" mnemonicParsing="false" onAction="#addNewUser" prefHeight="25.0" prefWidth="217.0" text="Добавить пользователя">
+      <Button fx:id="AddUserButton" layoutX="369.0" layoutY="327.0" mnemonicParsing="false" onAction="#addNewUser" prefHeight="25.0" prefWidth="217.0" text="Добавить пользователя">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>

@@ -1,20 +1,16 @@
 package com.example.bankinformationsystem.UI;
 
+import com.example.bankinformationsystem.utils.Form;
 import com.example.bankinformationsystem.DB.DataHandler;
-import com.example.bankinformationsystem.DB.Database;
 import com.example.bankinformationsystem.DB.FromDatabase;
-import com.example.bankinformationsystem.DB.ToDatabase;
-import com.example.bankinformationsystem.StartApplication;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import  javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
-
-import java.io.IOException;
+import javafx.stage.Window;
 
 public class Authorization {
 
@@ -22,9 +18,11 @@ public class Authorization {
     private TextField LoginField;
     @FXML
     private PasswordField PasswordField;
-
+    @FXML
+    private Button AuthorizeButton;
     @FXML
     private void authorize(){
+        Form form;
         Alerts alert;
         if (!LoginField.getText().equals("") && !PasswordField.getText().equals("")) {
             FromDatabase database = new FromDatabase();
@@ -32,12 +30,15 @@ public class Authorization {
             boolean valid = authorization_data.validAuthorize(LoginField.getText().trim(), PasswordField.getText().trim());
             boolean admin_valid = authorization_data.validAdmin(LoginField.getText().trim(), PasswordField.getText().trim());
             if(admin_valid){
-                adminFormInitialize();
+                new Form("admin.fxml", "admin");
                 return;
             }
             if(valid){
                 alert = new Alerts(AlertType.INFORMATION, "Успех", "Вход", "Вы успешно вошли!");
-
+                Alerts.showAlert(alert);
+                Form.hideStage(LoginField);
+                new Form("user.fxml", "user");
+                return;
             }else{
                 alert = new Alerts(AlertType.ERROR, "Ошибка", "Вход", "Пользователь не найден!");
             }
@@ -46,17 +47,5 @@ public class Authorization {
             alert = new Alerts(AlertType.ERROR, "Ошибка", "Ввод", "Введите логин и пароль");
         }
         Alerts.showAlert(alert);
-    }
-    private void adminFormInitialize() {
-        try {
-            Stage stage = new Stage();
-            FXMLLoader fxmlLoader = new FXMLLoader(StartApplication.class.getResource("admin.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 600, 400);
-            stage.setTitle("Admin");
-            stage.setScene(scene);
-            stage.show();
-        }catch (IOException e){
-            System.out.println("Fail" + e);
-        }
     }
 }

@@ -1,10 +1,6 @@
 package com.example.bankinformationsystem.DB;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-
 import java.sql.*;
-import java.util.*;
 
 public abstract class Database {
     public Connection getDatabaseConnection() {

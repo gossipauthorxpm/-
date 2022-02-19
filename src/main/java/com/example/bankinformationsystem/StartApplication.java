@@ -1,5 +1,6 @@
 package com.example.bankinformationsystem;
 
+import com.example.bankinformationsystem.utils.Form;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -21,4 +22,5 @@ public class StartApplication extends Application {
     public static void main(String[] args) {
         launch();
     }
+
 }
