@@ -4,6 +4,7 @@ module com.example.bankinformationsystem {
 
     requires org.controlsfx.controls;
     requires java.sql;
+    requires org.apache.commons.codec;
 
     opens com.example.bankinformationsystem to javafx.fxml;
     exports com.example.bankinformationsystem;

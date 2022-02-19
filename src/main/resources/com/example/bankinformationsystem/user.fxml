@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #464451;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bankinformationsystem.UI.UserWindow">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #464451;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bankinformationsystem.UI.UserWindow">
     <children>
-        <Label alignment="CENTER" layoutX="95.0" layoutY="22.0" prefHeight="40.0" prefWidth="419.0" text="User Work tools" textFill="WHITE">
+        <Label fx:id="Label1" alignment="CENTER" layoutX="95.0" layoutY="22.0" prefHeight="40.0" prefWidth="419.0" text="User Work tools" textFill="WHITE">
             <font>
                 <Font name="System Bold" size="20.0" />
             </font>
@@ -31,5 +31,6 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
+      <Button fx:id="button" layoutX="38.0" layoutY="188.0" mnemonicParsing="false" text="Button" onAction="#useButton" />
     </children>
 </AnchorPane>
