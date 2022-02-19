@@ -1,7 +1,9 @@
 package com.example.bankinformationsystem.UI;
 
 import com.example.bankinformationsystem.DB.DataHandler;
-import com.example.bankinformationsystem.DB.DatabaseHandler;
+import com.example.bankinformationsystem.DB.Database;
+import com.example.bankinformationsystem.DB.FromDatabase;
+import com.example.bankinformationsystem.DB.ToDatabase;
 import com.example.bankinformationsystem.StartApplication;
 
 import javafx.fxml.FXML;
@@ -25,7 +27,7 @@ public class Authorization {
     private void authorize(){
         Alerts alert;
         if (!LoginField.getText().equals("") && !PasswordField.getText().equals("")) {
-            DatabaseHandler database = new DatabaseHandler();
+            FromDatabase database = new FromDatabase();
             DataHandler authorization_data = new DataHandler(database.getAuthorizeDate());
             boolean valid = authorization_data.validAuthorize(LoginField.getText().trim(), PasswordField.getText().trim());
             boolean admin_valid = authorization_data.validAdmin(LoginField.getText().trim(), PasswordField.getText().trim());

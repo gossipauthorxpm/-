@@ -1,8 +1,6 @@
 package com.example.bankinformationsystem.UI;
 
-import com.example.bankinformationsystem.DB.DataHandler;
-import com.example.bankinformationsystem.DB.DatabaseHandler;
-import com.example.bankinformationsystem.DB.User;
+import com.example.bankinformationsystem.DB.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
@@ -32,12 +30,12 @@ public class AdminWindow {
 
     @FXML
     private void loadCards(){
-        CardList.setItems(new DatabaseHandler().getAllCards());
+        CardList.setItems(new FromDatabase().getAllCards());
     }
 
     @FXML
     private void loadDataFromCards(){
-        DatabaseHandler database = new DatabaseHandler();
+        FromDatabase database = new FromDatabase();
         String select_card = CardList.getValue();
         if(select_card.trim().length() == 16){
             List<String> info_from_card = database.getInfoFromCard(select_card);
@@ -48,12 +46,11 @@ public class AdminWindow {
     @FXML
     private void updateUserDate(){
         Alerts alert;
-        DatabaseHandler database = new DatabaseHandler();
         User user = createUser();
-
         if(user.getCard().length() == 16){
-            if(DataHandler.cardInBD(user.getCard(), database.getAllCards())) {
-                if(DataHandler.loginInBD(user.getLogin(), database.getListLogins())) {
+            if(DataHandler.cardInBD(user.getCard(), new FromDatabase().getAllCards())) {
+                if(DataHandler.loginInBD(user.getLogin(), new FromDatabase().getListLogins())) {
+                    ToDatabase database = new ToDatabase();
                     database.updateCurrentUser(user);
                     alert = new Alerts(AlertType.INFORMATION, "Обновление данных", "Успех!", "Вы обновили данные для карты!");
                 }else{
@@ -71,12 +68,11 @@ public class AdminWindow {
     @FXML
     private void addNewUser(){
         Alerts alert;
-        DatabaseHandler database = new DatabaseHandler();
         User new_user = createUser();
-
         if(new_user.getCard().length() == 16){
-            if(!DataHandler.loginInBD(new_user.getLogin(), database.getListLogins())){
-                if (!DataHandler.cardInBD(new_user.getCard(), database.getAllCards())){
+            if(!DataHandler.loginInBD(new_user.getLogin(), new FromDatabase().getListLogins())){
+                if (!DataHandler.cardInBD(new_user.getCard(), new FromDatabase().getAllCards())){
+                    ToDatabase database = new ToDatabase();
                     database.addNewUser(new_user);
                     alert = new Alerts(AlertType.INFORMATION, "Добавление пользователя", "Успех!", "Пользователь добавлен в базу данных");
                 }else {
