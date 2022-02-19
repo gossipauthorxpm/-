@@ -6,11 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="bank information system" />
+        <module name="BankInformationSystem" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="bank information system" target="17" />
+      <module name="BankInformationSystem" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

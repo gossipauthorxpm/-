@@ -10,7 +10,7 @@ public class DatabaseHandler {
 
     public Connection getDatabaseConnection() {
         try {
-            return DriverManager.getConnection("jdbc:mysql://localhost:3306/bank", "root", "vlad2233");
+            return DriverManager.getConnection("jdbc:mysql://localhost:3306/bank", "root", "");
         } catch (SQLException e) {
             System.out.println("FAILED" + e);
             return null;

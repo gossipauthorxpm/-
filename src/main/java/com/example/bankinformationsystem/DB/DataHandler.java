@@ -12,6 +12,7 @@ public class DataHandler {
     public DataHandler(List<ArrayList<String>> authorize_data){
         this.authorize_data = authorize_data;
     }
+    public DataHandler(){}
     //user - обычный пользователь, admin - админ
     /*Нулевой индекс - логины, Первый индекс - пароли, Второй индекс - Роль в системе(Админ, пользователь)*/
     //Проверка на обычного пользователя
