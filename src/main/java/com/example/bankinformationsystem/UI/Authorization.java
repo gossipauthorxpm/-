@@ -5,24 +5,22 @@ import com.example.bankinformationsystem.DB.DataHandler;
 import com.example.bankinformationsystem.DB.FromDatabase;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import  javafx.scene.control.Alert.AlertType;
-import javafx.stage.Stage;
-import javafx.stage.Window;
+import javafx.scene.layout.AnchorPane;
+
 
 public class Authorization {
-
+    @FXML
+    public AnchorPane form;
     @FXML
     private TextField LoginField;
     @FXML
     private PasswordField PasswordField;
-    @FXML
-    private Button AuthorizeButton;
+
     @FXML
     private void authorize(){
-        Form form;
         Alerts alert;
         if (!LoginField.getText().equals("") && !PasswordField.getText().equals("")) {
             FromDatabase database = new FromDatabase();
@@ -36,7 +34,7 @@ public class Authorization {
             if(valid){
                 alert = new Alerts(AlertType.INFORMATION, "Успех", "Вход", "Вы успешно вошли!");
                 Alerts.showAlert(alert);
-                Form.hideStage(LoginField);
+                Form.hideStage(form);
                 new Form("user.fxml", "user");
                 return;
             }else{

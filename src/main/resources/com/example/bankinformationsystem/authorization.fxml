@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #464451;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bankinformationsystem.UI.Authorization">
+<AnchorPane fx:id="form" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #464451;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bankinformationsystem.UI.Authorization">
    <children>
       <Label alignment="CENTER" layoutX="95.0" layoutY="22.0" prefHeight="40.0" prefWidth="419.0" text="Система управления банковским счетом" textFill="WHITE">
          <font>
