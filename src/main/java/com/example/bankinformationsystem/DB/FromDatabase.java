@@ -1,5 +1,6 @@
 package com.example.bankinformationsystem.DB;
 
+import com.example.bankinformationsystem.utils.Encoder;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -11,7 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FromDatabase extends Database{
-    public List<ArrayList<String>> getAuthorizeDate() {
+
+    public List<ArrayList<String>> getAuthorizeData() {
         Connection database = getDatabaseConnection();
         List<ArrayList<String>> data = new ArrayList<>();
         try {
@@ -22,7 +24,7 @@ public class FromDatabase extends Database{
             ArrayList<String> roles = new ArrayList<>();
             while(sql_result.next()){
                 logins.add(sql_result.getString("login"));
-                passwords.add(sql_result.getString("password"));
+                passwords.add(Encoder.decrypt(sql_result.getString("password")));
                 roles.add(sql_result.getString("role"));
             }
             data.add(logins);
@@ -54,6 +56,7 @@ public class FromDatabase extends Database{
             return null;
         }
     }
+
     public List<String> getInfoFromCard(String card){
         List<String> info_from_card = new ArrayList<>();
         Connection database = getDatabaseConnection();
@@ -64,7 +67,7 @@ public class FromDatabase extends Database{
                 info_from_card.add(sql_result.getString("realname"));
                 info_from_card.add(sql_result.getString("status"));
                 info_from_card.add(sql_result.getString("login"));
-                info_from_card.add(sql_result.getString("password"));
+                info_from_card.add(Encoder.decrypt(sql_result.getString("password")));
                 info_from_card.add(sql_result.getString("money"));
             }
             return info_from_card;
@@ -85,6 +88,23 @@ public class FromDatabase extends Database{
             return logins;
         }catch (SQLException e){
             System.out.println("Ошибка SQL" + e);
+            return null;
+        }
+    }
+    public ArrayList<String> getInfoToUserUI(String login){
+        Connection database = getDatabaseConnection();
+        ArrayList<String> data = new ArrayList<>();
+        try {
+            PreparedStatement sql_request = database.prepareStatement("SELECT money, card FROM users WHERE login=?");
+            sql_request.setString(1, login);
+            ResultSet sql_result = sql_request.executeQuery();
+            while (sql_result.next()){
+                data.add(sql_result.getString("money"));
+                data.add(sql_result.getString("card"));
+            }
+            return data;
+        }catch (Exception e){
+            System.out.println("Fail : " + e);
             return null;
         }
     }

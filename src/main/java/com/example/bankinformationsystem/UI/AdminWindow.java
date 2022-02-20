@@ -11,6 +11,10 @@ import javafx.scene.control.Alert.AlertType;
 
 public class AdminWindow {
 
+    public void initialize(){
+        loadCards();
+    }
+
     @FXML
     private ComboBox<String> CardList;
 
@@ -27,11 +31,6 @@ public class AdminWindow {
     private TextField StatusField;
     @FXML
     private TextField PasswordField;
-
-    @FXML
-    private void loadCards(){
-        CardList.setItems(new FromDatabase().getAllCards());
-    }
 
     @FXML
     private void loadDataFromCards(){
@@ -102,5 +101,8 @@ public class AdminWindow {
         LoginField.setText(list.get(2));
         PasswordField.setText(list.get(3));
         MoneyField.setText(list.get(4));
+    }
+    private void loadCards(){
+        CardList.setItems(new FromDatabase().getAllCards());
     }
 }

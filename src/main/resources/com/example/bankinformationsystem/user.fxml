@@ -1,36 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #464451;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bankinformationsystem.UI.UserWindow">
     <children>
-        <Label fx:id="Label1" alignment="CENTER" layoutX="95.0" layoutY="22.0" prefHeight="40.0" prefWidth="419.0" text="User Work tools" textFill="WHITE">
+        <Label alignment="CENTER" layoutX="95.0" layoutY="22.0" prefHeight="40.0" prefWidth="419.0" text="User Work tools" textFill="WHITE">
             <font>
                 <Font name="System Bold" size="20.0" />
             </font>
         </Label>
-      <Label layoutX="38.0" layoutY="111.0" text="Счет" textFill="WHITE">
+      <Label layoutX="90.0" layoutY="124.0" text="Счет -" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Label layoutX="38.0" layoutY="85.0" text="Номер карты" textFill="WHITE">
+      <Label layoutX="38.0" layoutY="85.0" text="Номер карты -" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Label layoutX="38.0" layoutY="136.0" text="Перевод клиенту" textFill="WHITE">
+      <Label layoutX="27.0" layoutY="200.0" text="Перевод клиенту" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Label layoutX="38.0" layoutY="161.0" text="История переводов" textFill="WHITE">
+      <Label fx:id="HistoryButton" accessibleRole="BUTTON" layoutX="31.0" layoutY="359.0" text="История переводов" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <effect>
+            <Glow />
+         </effect>
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+      </Label>
+      <TextField fx:id="CardField" alignment="CENTER" editable="false" layoutX="148.0" layoutY="81.0" prefHeight="25.0" prefWidth="335.0" />
+      <TextField fx:id="MoneyField" alignment="CENTER" editable="false" layoutX="148.0" layoutY="120.0" prefHeight="25.0" prefWidth="335.0" />
+      <Label layoutX="489.0" layoutY="124.0" text="Руб" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Button fx:id="button" layoutX="38.0" layoutY="188.0" mnemonicParsing="false" text="Button" onAction="#useButton" />
+      <TextField fx:id="TransactionField" alignment="CENTER" layoutX="148.0" layoutY="196.0" prefHeight="25.0" prefWidth="419.0" promptText="Введите номер карты для перевода" />
+      <Button fx:id="TransactionButton" layoutX="278.0" layoutY="235.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="159.0" text="Выполнить перевод" />
     </children>
 </AnchorPane>

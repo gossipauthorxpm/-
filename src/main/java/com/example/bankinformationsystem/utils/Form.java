@@ -3,10 +3,8 @@ package com.example.bankinformationsystem.utils;
 import com.example.bankinformationsystem.StartApplication;
 
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Control;
-import javafx.scene.layout.AnchorPane;
-
 
 import javafx.stage.Stage;
 
@@ -29,15 +27,12 @@ public class Form {
             stage.setTitle(title_form);
             stage.setScene(scene);
             stage.show();
+
         }catch (IOException e){
             System.out.println("Fail" + e);
         }
     }
-    public static void hideStage(Control control){
-        Stage stage = (Stage) control.getScene().getWindow();
-        stage.close();
-    }
-    public static void hideStage(AnchorPane control){
+    public static void hideStage(Parent control){
         Stage stage = (Stage) control.getScene().getWindow();
         stage.close();
     }

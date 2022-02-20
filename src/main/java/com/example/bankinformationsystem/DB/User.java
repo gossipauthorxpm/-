@@ -1,5 +1,7 @@
 package com.example.bankinformationsystem.DB;
 
+import com.example.bankinformationsystem.utils.Encoder;
+
 public class User {
 
     private String login;
@@ -11,7 +13,7 @@ public class User {
 
     public User(String login, String password, String real_name, String status, String money, String card){
         this.login = login;
-        this.password = password;
+        this.password = Encoder.encrypt(password);
         this.real_name = real_name;
         this.status = status;
         this.money = money;

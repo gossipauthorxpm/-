@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class ToDatabase extends Database {
+    //
     public void updateCurrentUser(User user){
         Connection database = getDatabaseConnection();
         try {
@@ -20,6 +21,7 @@ public class ToDatabase extends Database {
             System.out.println("Ошибка SQL " + e);
         }
     }
+    //
     public void addNewUser(User new_user){
         addNewUserInAuthorization(new_user);
         Connection database = getDatabaseConnection();
