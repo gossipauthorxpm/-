@@ -108,5 +108,37 @@ public class FromDatabase extends Database{
             return null;
         }
     }
+    public String getMoneyPeople(String sender_login){
+        String money = null;
+        Connection database = getDatabaseConnection();
+        try {
+            PreparedStatement sql_request = database.prepareStatement("SELECT money FROM users WHERE login=?");
+            sql_request.setString(1, sender_login);
+            ResultSet sql_result = sql_request.executeQuery();
+            while (sql_result.next()){
+                money = sql_result.getString("money");
+            }
+            return money;
+        }catch (Exception e){
+            System.out.println("Ошибка SQL : " + e);
+            return null;
+        }
+    }
+    public String getLoginForCard(String card){
+        String login = null;
+        Connection database = getDatabaseConnection();
+        try {
+            PreparedStatement sql_request = database.prepareStatement("SELECT login FROM users WHERE card=?");
+            sql_request.setString(1, card);
+            ResultSet sql_result = sql_request.executeQuery();
+            while (sql_result.next()){
+                login = sql_result.getString("login");
+            }
+            return login;
+        }catch (Exception e){
+            System.out.println("SQL ERROR : " + e);
+            return null;
+        }
+    }
 
 }

@@ -53,4 +53,17 @@ public class ToDatabase extends Database {
             System.out.println("Ошибка SQL " + e);
         }
     }
+    public void updateUserMoney(String login, String money){
+        Connection database = getDatabaseConnection();
+        try{
+            PreparedStatement sql_request = database.prepareStatement("UPDATE users SET money=? WHERE login=?");
+            sql_request.setString(1, money);
+            sql_request.setString(2, login);
+
+            sql_request.execute();
+
+        } catch (Exception e){
+            System.out.println("SQL ERROR : " + e);
+        }
+    }
 }

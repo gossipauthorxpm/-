@@ -47,6 +47,7 @@
          </font>
       </Label>
       <TextField fx:id="TransactionField" alignment="CENTER" layoutX="148.0" layoutY="196.0" prefHeight="25.0" prefWidth="419.0" promptText="Введите номер карты для перевода" />
-      <Button fx:id="TransactionButton" layoutX="278.0" layoutY="235.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="159.0" text="Выполнить перевод" />
+      <Button fx:id="TransactionButton" layoutX="283.0" layoutY="262.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0" text="Выполнить перевод" onAction="#goTransaction"/>
+      <TextField fx:id="SumField" alignment="CENTER" layoutX="283.0" layoutY="228.0" promptText="Введите сумму" />
     </children>
 </AnchorPane>
