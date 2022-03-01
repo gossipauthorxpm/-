@@ -5,39 +5,36 @@ import com.example.bankinformationsystem.DB.ToDatabase;
 
 public class Transaction {
 
-    private String sender_login;
-    private String recipient_login;
+    private final String SENDER_LOGIN;
+    private final String RECIPIENT_LOGIN;
     private String sender_balance;
     private String recipient_balance;
 
 
     public Transaction(String sender_login, String recipient_login){
-        this.recipient_login = recipient_login;
-        this.sender_login = sender_login;
+        this.RECIPIENT_LOGIN = recipient_login;
+        this.SENDER_LOGIN = sender_login;
     }
 
-    public void transaction(int check){
-        Integer sender_money =  Integer.parseInt(new FromDatabase().getMoneyPeople(sender_login).trim());
-        Integer recipient_money = Integer.parseInt(new FromDatabase().getMoneyPeople(recipient_login).trim());
+    public void transaction(int check) throws Exception{
+        int sender_money =  Integer.parseInt(new FromDatabase().getMoneyPeople(SENDER_LOGIN).trim());
+        int recipient_money = Integer.parseInt(new FromDatabase().getMoneyPeople(RECIPIENT_LOGIN).trim());
 
-        TransacitonHander handler = new TransacitonHander(sender_money, recipient_money, check);
+        TransactionHandler handler = new TransactionHandler(sender_money, recipient_money, check);
         //балансы после перевода
         sender_balance = toString(handler.returnSenderBalance());
         recipient_balance = toString(handler.returnRecipientBalance());
 
-        if(sender_balance.equals("-1")|| recipient_balance.equals("-1")){
-            return;
+        if(sender_balance.equals("-1") || recipient_balance.equals("-1")){
+            throw new Exception("Ошибка перевода!");
         }
 
-        new ToDatabase().updateUserMoney(sender_login, sender_balance);
-        new ToDatabase().updateUserMoney(recipient_login, recipient_balance);
+        new ToDatabase().updateUserMoney(SENDER_LOGIN, sender_balance);
+        new ToDatabase().updateUserMoney(RECIPIENT_LOGIN, recipient_balance);
     }
 
     public boolean validTransaction(){
-        if(sender_balance.equals("-1") || recipient_balance.equals("-1")){
-            return false;
-        }
-        return true;
+        return !sender_balance.equals("-1") || !recipient_balance.equals("-1");
     }
     private String toString(int balance) {
         return Integer.toString(balance);

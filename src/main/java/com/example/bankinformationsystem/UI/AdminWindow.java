@@ -73,6 +73,7 @@ public class AdminWindow {
                 if (!DataHandler.cardInBD(new_user.getCard(), new FromDatabase().getAllCards())){
                     ToDatabase database = new ToDatabase();
                     database.addNewUser(new_user);
+                    loadCards();
                     alert = new Alerts(AlertType.INFORMATION, "Добавление пользователя", "Успех!", "Пользователь добавлен в базу данных");
                 }else {
                     alert = new Alerts(AlertType.ERROR, "Добавление пользователя", "Ошибка", "Пользователь с такой картой уже находится в базе данных");

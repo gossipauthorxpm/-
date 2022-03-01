@@ -39,7 +39,7 @@ public class Authorization {
             if(valid){
                 alert = new Alerts(AlertType.INFORMATION, "Успех", "Вход", "Вы успешно вошли!");
                 Alerts.showAlert(alert);
-                StaticData.login = LoginField.getText().trim();
+                StaticData.user_login = LoginField.getText().trim();
                 Form.hideStage(form);
                 new Form("user.fxml", "user");
                 return;

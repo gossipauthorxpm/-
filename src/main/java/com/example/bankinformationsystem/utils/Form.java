@@ -19,7 +19,7 @@ public class Form {
         this.title_form = title_form;
         formInitialize();
     }
-    public void formInitialize(){
+    private void formInitialize(){
         try {
             stage = new Stage();
             FXMLLoader fxmlLoader = new FXMLLoader(StartApplication.class.getResource(name_fxml_file));

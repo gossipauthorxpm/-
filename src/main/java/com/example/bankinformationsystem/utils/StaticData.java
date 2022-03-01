@@ -1,5 +1,5 @@
 package com.example.bankinformationsystem.utils;
 
 public class StaticData {
-    public static String login;
+    public static String user_login;
 }

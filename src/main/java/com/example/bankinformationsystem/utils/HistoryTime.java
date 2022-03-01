@@ -3,8 +3,8 @@ package com.example.bankinformationsystem.utils;
 import java.time.*;
 
 public class HistoryTime {
-    private LocalDate date;
-    private LocalTime time;
+    private final LocalDate date;
+    private final LocalTime time;
 
     public HistoryTime(){
          date = LocalDate.now();
@@ -14,7 +14,5 @@ public class HistoryTime {
     public String getLocalTime(){
         return time.toString();
     }
-    public String getLocalDate(){
-        return date.toString();
-    }
+    public String getLocalDate(){ return date.toString(); }
 }

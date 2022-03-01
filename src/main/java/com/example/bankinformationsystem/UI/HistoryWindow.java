@@ -13,15 +13,15 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 public class HistoryWindow {
     public void initialize(){
-        ObservableList<String[]> list = new FromDatabase().getHistoryUser(StaticData.login);
-        ObservableList<History> object_list = creteHistory(list);
+        ObservableList<String[]> user_history = new FromDatabase().getHistoryUser(StaticData.user_login);
+        ObservableList<History> treatments_history = treatmentHistory(user_history);
 
         fromColumn.setCellValueFactory(new PropertyValueFactory<>("sender"));
         toColumn.setCellValueFactory(new PropertyValueFactory<>("recipient"));
         sumColumn.setCellValueFactory(new PropertyValueFactory<>("sum"));
         timeColumn.setCellValueFactory(new PropertyValueFactory<>("time"));
 
-        HistoryTable.setItems(object_list);
+        HistoryTable.setItems(treatments_history);
 
     }
     @FXML
@@ -35,9 +35,9 @@ public class HistoryWindow {
     @FXML
     private TableColumn<History, String> timeColumn;
 
-    private ObservableList<History> creteHistory(ObservableList<String[]> list){
+    private ObservableList<History> treatmentHistory(ObservableList<String[]> user_history){
         ObservableList<History> obj_list = FXCollections.observableArrayList();
-        for(String[] item : list){
+        for(String[] item : user_history){
             obj_list.add(new History(item[0], item[1], item[2], item[3]));
         }
         return obj_list;
