@@ -66,4 +66,17 @@ public class ToDatabase extends Database {
             System.out.println("SQL ERROR : " + e);
         }
     }
+    public void updateHistory(String local_date, String local_time, String from_user, String to_user, String sum){
+        Connection database = getDatabaseConnection();
+        try{
+            PreparedStatement sql_request = database.prepareStatement("INSERT INTO transaction VALUES(?,?,?,?)");
+            sql_request.setString(1,to_user);
+            sql_request.setString(2, from_user);
+            sql_request.setString(3, sum);
+            sql_request.setString(4, local_date + " " + local_time);
+            sql_request.execute();
+        }catch (Exception e){
+            System.out.println("SQL ERROR : " + e);
+        }
+    }
 }

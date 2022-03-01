@@ -12,4 +12,6 @@ module com.example.bankinformationsystem {
     opens com.example.bankinformationsystem.UI to javafx.fxml;
     exports com.example.bankinformationsystem.DB;
     opens com.example.bankinformationsystem.DB to javafx.fxml;
+    exports com.example.bankinformationsystem.utils;
+    opens com.example.bankinformationsystem.utils to javafx.fxml;
 }

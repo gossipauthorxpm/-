@@ -4,10 +4,7 @@ import com.example.bankinformationsystem.utils.Encoder;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -140,5 +137,23 @@ public class FromDatabase extends Database{
             return null;
         }
     }
+    public ObservableList<String[]> getHistoryUser(String user){
+        Connection database = getDatabaseConnection();
+        ObservableList<String[]> full_list_history = FXCollections.observableArrayList();
+        try{
+            PreparedStatement sql_request = database.prepareStatement("SELECT * FROM transaction WHERE from_user = ?");
+            sql_request.setString(1, user);
+            ResultSet sql_result = sql_request.executeQuery();
 
+            while (sql_result.next()){
+                full_list_history.add(new String[]{sql_result.getString("to_user"), sql_result.getString("from_user"),
+                    sql_result.getString("sum"), sql_result.getString("time")});
+            }
+
+            return full_list_history;
+        }catch (Exception e){
+            System.out.println("SQL ERROR : " + e);
+            return null;
+        }
+    }
 }

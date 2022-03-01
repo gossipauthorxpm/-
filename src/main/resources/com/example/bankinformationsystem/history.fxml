@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #464451;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bankinformationsystem.UI.HistoryWindow">
+    <children>
+        <Label alignment="CENTER" layoutX="95.0" layoutY="22.0" prefHeight="40.0" prefWidth="419.0" text="History" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="20.0" />
+            </font>
+        </Label>
+      <TableView fx:id="HistoryTable" layoutX="62.0" layoutY="66.0" prefHeight="287.0" prefWidth="480.0">
+        <columns>
+          <TableColumn fx:id="fromColumn" prefWidth="110.0" text="Куда" />
+          <TableColumn fx:id="toColumn" prefWidth="110.0" text="Откуда" />
+            <TableColumn fx:id="sumColumn" prefWidth="100.0" text="Сумма" />
+            <TableColumn fx:id="timeColumn" minWidth="20.0" prefWidth="159.0" text="Время перевода" />
+        </columns>
+      </TableView>
+    </children>
+</AnchorPane>
