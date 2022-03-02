@@ -67,12 +67,12 @@ public class AdminWindow {
     @FXML
     private void addNewUser(){
         Alerts alert;
-        User new_user = createUser();
-        if(new_user.getCard().length() == 16){
-            if(!DataHandler.loginInBD(new_user.getLogin(), new FromDatabase().getListLogins())){
-                if (!DataHandler.cardInBD(new_user.getCard(), new FromDatabase().getAllCards())){
+        User user = createUser();
+        if(user.getCard().length() == 16){
+            if(!DataHandler.loginInBD(user.getLogin(), new FromDatabase().getListLogins())){
+                if (!DataHandler.cardInBD(user.getCard(), new FromDatabase().getAllCards())){
                     ToDatabase database = new ToDatabase();
-                    database.addNewUser(new_user);
+                    database.addNewUser(user);
                     loadCards();
                     alert = new Alerts(AlertType.INFORMATION, "Добавление пользователя", "Успех!", "Пользователь добавлен в базу данных");
                 }else {

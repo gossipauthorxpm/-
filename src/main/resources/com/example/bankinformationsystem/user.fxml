@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
@@ -36,6 +37,11 @@
       <TextField fx:id="TransactionField" alignment="CENTER" layoutX="148.0" layoutY="196.0" prefHeight="25.0" prefWidth="419.0" promptText="Введите номер карты для перевода" />
       <Button fx:id="TransactionButton" layoutX="283.0" layoutY="262.0" mnemonicParsing="false" onAction="#goTransaction" prefHeight="25.0" prefWidth="149.0" text="Выполнить перевод" />
       <TextField fx:id="SumField" alignment="CENTER" layoutX="283.0" layoutY="228.0" promptText="Введите сумму" />
-      <Button fx:id="HistoryButton" layoutX="27.0" layoutY="352.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0" text="История переводов" onAction="#goToHistory"/>
+      <Button fx:id="HistoryButton" layoutX="27.0" layoutY="352.0" mnemonicParsing="false" onAction="#goToHistory" prefHeight="25.0" prefWidth="149.0" text="История переводов" />
+      <Label fx:id="UserBlock" layoutX="148.0" layoutY="168.0" prefHeight="17.0" prefWidth="335.0" text="Ваш аккаунт заблокировнан! Переводы не работают!" textFill="RED" visible="false">
+         <effect>
+            <Bloom threshold="0.49" />
+         </effect>
+      </Label>
     </children>
 </AnchorPane>

@@ -1,6 +1,7 @@
 package com.example.bankinformationsystem.DB;
 
 import com.example.bankinformationsystem.utils.Encoder;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -153,6 +154,22 @@ public class FromDatabase extends Database{
             return full_list_history;
         }catch (Exception e){
             System.out.println("SQL ERROR : " + e);
+            return null;
+        }
+    }
+    public String getStatusUser(String user){
+        Connection database = getDatabaseConnection();
+        String status = null;
+        try {
+            PreparedStatement sql_request = database.prepareStatement("SELECT status FROM users WHERE login=?");
+            sql_request.setString(1, user);
+            ResultSet sql_result = sql_request.executeQuery();
+            while(sql_result.next()){
+                status = sql_result.getString("status");
+            }
+            return status;
+        }catch (Exception e){
+            System.out.println("ERROR SQL : " + e);
             return null;
         }
     }

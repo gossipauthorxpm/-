@@ -6,7 +6,7 @@ import com.example.bankinformationsystem.DB.ToDatabase;
 import com.example.bankinformationsystem.utils.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 import java.util.ArrayList;
@@ -17,24 +17,20 @@ public class UserWindow {
 
     public void initialize(){
         FromDatabase database = new FromDatabase();
+        if(database.getStatusUser(user_login).equals("red")){
+            UserBlock.setVisible(true);
+        }
         ArrayList<String> user_data = database.getInfoToUserUI(user_login);
         setUserFields(user_data);
     }
     @FXML
     private TextField CardField;
-
     @FXML
-    private Button HistoryButton;
-
+    private Label UserBlock;
     @FXML
     private TextField MoneyField;
-
-    @FXML
-    private Button TransactionButton;
-
     @FXML
     private TextField TransactionField;
-
     @FXML
     private TextField SumField;
 
@@ -63,8 +59,8 @@ public class UserWindow {
             }
         }catch (NumberFormatException e){
             alert = new Alerts(Alert.AlertType.ERROR, "Транзакция", "Ошибка", "Введите целое число для перевода!");
-        }catch (Exception e){
-            alert = new Alerts(Alert.AlertType.ERROR, "Транзакция", "Ошибка", "Ошибка перевода!");
+        }catch (UserException e){
+            alert = new Alerts(Alert.AlertType.ERROR, "Транзакция", "Ошибка", e.toString());
         }
         Alerts.showAlert(alert);
     }
