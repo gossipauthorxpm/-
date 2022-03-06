@@ -74,7 +74,7 @@ public class FromDatabase extends Database{
             return null;
         }
     }
-    public List<String> getListLogins(){
+    public List<String> getAllLogins(){
         Connection database = getDatabaseConnection();
         List<String> logins = new ArrayList<>();
         try {

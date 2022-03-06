@@ -39,20 +39,6 @@ public class ToDatabase extends Database {
             System.out.println("Ошибка SQL" + e);
         }
     }
-    private void addNewUserInAuthorization(User new_user){
-        Connection database = getDatabaseConnection();
-        try {
-            PreparedStatement sql_request = database.prepareStatement("INSERT INTO authorization VALUES(?,?,?)");
-            sql_request.setString(1, new_user.getLogin());
-            sql_request.setString(2, new_user.getPassword());
-            sql_request.setString(3, "user");
-
-            sql_request.execute();
-
-        }catch (SQLException e ){
-            System.out.println("Ошибка SQL " + e);
-        }
-    }
     public void updateUserMoney(String login, String money){
         Connection database = getDatabaseConnection();
         try{
@@ -77,6 +63,20 @@ public class ToDatabase extends Database {
             sql_request.execute();
         }catch (Exception e){
             System.out.println("SQL ERROR : " + e);
+        }
+    }
+    private void addNewUserInAuthorization(User new_user){
+        Connection database = getDatabaseConnection();
+        try {
+            PreparedStatement sql_request = database.prepareStatement("INSERT INTO authorization VALUES(?,?,?)");
+            sql_request.setString(1, new_user.getLogin());
+            sql_request.setString(2, new_user.getPassword());
+            sql_request.setString(3, "user");
+
+            sql_request.execute();
+
+        }catch (SQLException e ){
+            System.out.println("Ошибка SQL " + e);
         }
     }
 }

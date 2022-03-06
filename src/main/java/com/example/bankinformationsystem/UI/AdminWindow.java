@@ -48,7 +48,7 @@ public class AdminWindow {
         User user = createUser();
         if(user.getCard().length() == 16){
             if(DataHandler.cardInBD(user.getCard(), new FromDatabase().getAllCards())) {
-                if(DataHandler.loginInBD(user.getLogin(), new FromDatabase().getListLogins())) {
+                if(DataHandler.loginInBD(user.getLogin(), new FromDatabase().getAllLogins())) {
                     ToDatabase database = new ToDatabase();
                     database.updateCurrentUser(user);
                     alert = new Alerts(AlertType.INFORMATION, "Обновление данных", "Успех!", "Вы обновили данные для карты!");
@@ -69,7 +69,7 @@ public class AdminWindow {
         Alerts alert;
         User user = createUser();
         if(user.getCard().length() == 16){
-            if(!DataHandler.loginInBD(user.getLogin(), new FromDatabase().getListLogins())){
+            if(!DataHandler.loginInBD(user.getLogin(), new FromDatabase().getAllLogins())){
                 if (!DataHandler.cardInBD(user.getCard(), new FromDatabase().getAllCards())){
                     ToDatabase database = new ToDatabase();
                     database.addNewUser(user);
